@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CalculaFácil - Calculadoras Online Gratis</title>
-<meta name="description" content="Calculadoras online gratis de porcentajes, edad, IMC, IVA, descuentos, intereses y mucho más.">
+<title>Calculandoando - Calculadoras Online Gratis</title>
+<meta name="description" content="Calculadoras online gratis y fáciles de usar. Calcula porcentajes, descuentos, IVA, edad, IMC, intereses y mucho más.">
 
 <style>
 * {
@@ -22,7 +22,7 @@ body {
 header {
     background: #111827;
     color: white;
-    padding: 22px;
+    padding: 22px 20px;
 }
 
 nav {
@@ -34,7 +34,7 @@ nav {
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -44,17 +44,20 @@ nav span {
 
 .hero {
     text-align: center;
-    padding: 55px 20px 35px;
+    padding: 60px 20px 40px;
 }
 
 .hero h1 {
-    font-size: 42px;
+    font-size: 44px;
     margin: 0 0 15px;
 }
 
 .hero p {
     color: #64748b;
     font-size: 18px;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.6;
 }
 
 .grid {
@@ -79,6 +82,7 @@ nav span {
 
 .card p {
     color: #64748b;
+    line-height: 1.5;
 }
 
 input {
@@ -90,8 +94,13 @@ input {
     font-size: 16px;
 }
 
-button {
+button,
+.card a {
+    display: block;
     width: 100%;
+}
+
+button {
     padding: 12px;
     margin-top: 8px;
     border: none;
@@ -115,10 +124,31 @@ button:hover {
     min-height: 20px;
 }
 
+.info {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    line-height: 1.7;
+}
+
+.info h2 {
+    margin-top: 30px;
+}
+
 footer {
     text-align: center;
     padding: 45px 20px;
     color: #64748b;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    nav span {
+        display: none;
+    }
 }
 </style>
 </head>
@@ -127,312 +157,555 @@ footer {
 
 <header>
 <nav>
-<div class="logo">CalculaFácil</div>
+<div class="logo">Calculandoando</div>
 <span>Calculadoras online gratis</span>
 </nav>
 </header>
 
+
 <section class="hero">
+
 <h1>Calculadoras Online Gratis</h1>
-<p>Herramientas rápidas y sencillas para tus cálculos diarios.</p>
+
+<p>
+Herramientas rápidas y sencillas para realizar cálculos
+cotidianos desde el móvil o el ordenador.
+</p>
+
 </section>
+
 
 <section class="grid">
 
+
 <!-- PORCENTAJE -->
+
 <div class="card">
-<h2>💰 Porcentaje</h2>
-<p>Calcula un porcentaje de una cantidad.</p>
+
+<h2>💰 Calculadora de porcentaje</h2>
+
+<p>
+Calcula rápidamente un porcentaje de cualquier cantidad.
+</p>
 
 <input type="number" id="cantidad" placeholder="Cantidad">
+
 <input type="number" id="porcentaje" placeholder="Porcentaje">
 
-<button onclick="porcentaje()">Calcular</button>
+<button onclick="calcularPorcentaje()">
+Calcular
+</button>
 
 <div class="resultado" id="resultadoPorcentaje"></div>
+
 </div>
 
 
 <!-- CALCULADORA -->
+
 <div class="card">
-<h2>🧮 Calculadora</h2>
-<p>Realiza operaciones matemáticas básicas.</p>
+
+<h2>🧮 Calculadora básica</h2>
+
+<p>
+Realiza sumas, restas, multiplicaciones y divisiones.
+</p>
 
 <input type="number" id="num1" placeholder="Primer número">
+
 <input type="number" id="num2" placeholder="Segundo número">
 
-<button onclick="operar('+')">Sumar</button>
-<button onclick="operar('-')">Restar</button>
-<button onclick="operar('*')">Multiplicar</button>
-<button onclick="operar('/')">Dividir</button>
+<button onclick="operar('+')">
+Sumar
+</button>
+
+<button onclick="operar('-')">
+Restar
+</button>
+
+<button onclick="operar('*')">
+Multiplicar
+</button>
+
+<button onclick="operar('/')">
+Dividir
+</button>
 
 <div class="resultado" id="resultadoOperacion"></div>
+
 </div>
 
 
 <!-- EDAD -->
+
 <div class="card">
+
 <h2>🎂 Calculadora de edad</h2>
-<p>Descubre tu edad exacta.</p>
+
+<p>
+Calcula tu edad a partir de tu fecha de nacimiento.
+</p>
 
 <input type="date" id="fecha">
 
-<button onclick="edad()">Calcular edad</button>
+<button onclick="calcularEdad()">
+Calcular edad
+</button>
 
 <div class="resultado" id="resultadoEdad"></div>
+
 </div>
 
 
 <!-- IMC -->
+
 <div class="card">
+
 <h2>⚖️ Calculadora de IMC</h2>
-<p>Calcula tu índice de masa corporal.</p>
+
+<p>
+Calcula tu índice de masa corporal a partir de tu peso y altura.
+</p>
 
 <input type="number" id="peso" placeholder="Peso en kg">
+
 <input type="number" id="altura" placeholder="Altura en metros">
 
-<button onclick="imc()">Calcular IMC</button>
+<button onclick="calcularIMC()">
+Calcular IMC
+</button>
 
 <div class="resultado" id="resultadoIMC"></div>
+
 </div>
 
 
 <!-- DESCUENTO -->
+
 <div class="card">
+
 <h2>🛒 Calculadora de descuento</h2>
-<p>Calcula cuánto pagarás después de un descuento.</p>
 
-<input type="number" id="precio" placeholder="Precio">
-<input type="number" id="descuento" placeholder="Descuento %">
+<p>
+Calcula cuánto ahorras y cuánto pagarás después de aplicar un descuento.
+</p>
 
-<button onclick="calcularDescuento()">Calcular</button>
+<a href="calculadora-descuento.html">
+<button>
+Abrir calculadora
+</button>
+</a>
 
-<div class="resultado" id="resultadoDescuento"></div>
 </div>
 
 
 <!-- IVA -->
+
 <div class="card">
+
 <h2>🏦 Calculadora de IVA</h2>
-<p>Añade IVA a cualquier precio.</p>
 
-<input type="number" id="precioIVA" placeholder="Precio sin IVA">
-<input type="number" id="iva" placeholder="IVA % (ej: 21)">
+<p>
+Calcula el IVA y el precio final de un producto.
+</p>
 
-<button onclick="calcularIVA()">Calcular</button>
+<a href="calculadora-iva.html">
+<button>
+Abrir calculadora
+</button>
+</a>
 
-<div class="resultado" id="resultadoIVA"></div>
 </div>
 
 
-<!-- INTERES -->
+<!-- INTERÉS -->
+
 <div class="card">
+
 <h2>📈 Interés compuesto</h2>
-<p>Calcula cómo crece una inversión.</p>
+
+<p>
+Calcula cuánto puede crecer una cantidad con interés compuesto.
+</p>
 
 <input type="number" id="capital" placeholder="Capital inicial">
-<input type="number" id="tasa" placeholder="Interés anual %">
-<input type="number" id="años" placeholder="Años">
 
-<button onclick="interes()">Calcular</button>
+<input type="number" id="tasa" placeholder="Interés anual %">
+
+<input type="number" id="años" placeholder="Número de años">
+
+<button onclick="calcularInteres()">
+Calcular
+</button>
 
 <div class="resultado" id="resultadoInteres"></div>
+
 </div>
 
 
 <!-- REGLA DE TRES -->
+
 <div class="card">
+
 <h2>📐 Regla de tres</h2>
-<p>Resuelve una regla de tres simple.</p>
+
+<p>
+Resuelve rápidamente una regla de tres simple.
+</p>
 
 <input type="number" id="r1" placeholder="A">
+
 <input type="number" id="r2" placeholder="B">
+
 <input type="number" id="r3" placeholder="C">
 
-<button onclick="reglaTres()">Calcular</button>
+<button onclick="reglaTres()">
+Calcular
+</button>
 
 <div class="resultado" id="resultadoRegla"></div>
+
 </div>
 
 
 <!-- SALARIO -->
+
 <div class="card">
-<h2>💵 Salario mensual</h2>
-<p>Calcula un salario mensual aproximado.</p>
+
+<h2>💵 Calculadora de salario</h2>
+
+<p>
+Calcula un salario mensual aproximado a partir del salario por hora.
+</p>
 
 <input type="number" id="hora" placeholder="€/hora">
+
 <input type="number" id="horas" placeholder="Horas por semana">
 
-<button onclick="salario()">Calcular</button>
+<button onclick="calcularSalario()">
+Calcular
+</button>
 
 <div class="resultado" id="resultadoSalario"></div>
+
 </div>
 
 
 <!-- TIEMPO -->
+
 <div class="card">
+
 <h2>⏱️ Conversor de tiempo</h2>
-<p>Convierte horas en minutos y segundos.</p>
+
+<p>
+Convierte horas en minutos y segundos.
+</p>
 
 <input type="number" id="horasTiempo" placeholder="Horas">
 
-<button onclick="tiempo()">Convertir</button>
+<button onclick="convertirTiempo()">
+Convertir
+</button>
 
 <div class="resultado" id="resultadoTiempo"></div>
+
 </div>
+
 
 </section>
 
+
+<section class="info">
+
+<h2>Calculadoras online gratuitas</h2>
+
+<p>
+Calculandoando reúne herramientas sencillas para realizar
+cálculos habituales de forma rápida y gratuita.
+Puedes utilizarlas desde cualquier dispositivo sin instalar
+ningún programa.
+</p>
+
+<h2>¿Qué puedes calcular?</h2>
+
+<p>
+Puedes calcular porcentajes, descuentos, IVA, edad, IMC,
+intereses, salarios, reglas de tres y conversiones de tiempo.
+Seguiremos añadiendo nuevas herramientas para cubrir más
+necesidades.
+</p>
+
+</section>
+
+
 <footer>
-© 2026 CalculaFácil · Calculadoras online gratuitas
+
+© 2026 Calculandoando · Calculadoras online gratuitas
+
 </footer>
 
 
 <script>
 
-function porcentaje() {
-    let c = Number(document.getElementById("cantidad").value);
-    let p = Number(document.getElementById("porcentaje").value);
+
+function calcularPorcentaje() {
+
+    let cantidad =
+        Number(document.getElementById("cantidad").value);
+
+    let porcentaje =
+        Number(document.getElementById("porcentaje").value);
+
+    if (isNaN(cantidad) || isNaN(porcentaje)) {
+
+        document.getElementById("resultadoPorcentaje").innerText =
+            "Introduce ambos valores.";
+
+        return;
+    }
+
+    let resultado =
+        cantidad * porcentaje / 100;
 
     document.getElementById("resultadoPorcentaje").innerText =
-        c && p ? (c * p / 100).toFixed(2) : "Introduce ambos valores.";
+        "Resultado: " + resultado.toFixed(2);
+
 }
 
 
 function operar(op) {
-    let a = Number(document.getElementById("num1").value);
-    let b = Number(document.getElementById("num2").value);
-    let r;
 
-    if (op === "+") r = a + b;
-    if (op === "-") r = a - b;
-    if (op === "*") r = a * b;
+    let a =
+        Number(document.getElementById("num1").value);
+
+    let b =
+        Number(document.getElementById("num2").value);
+
+    let resultado;
+
+    if (op === "+") {
+        resultado = a + b;
+    }
+
+    if (op === "-") {
+        resultado = a - b;
+    }
+
+    if (op === "*") {
+        resultado = a * b;
+    }
 
     if (op === "/") {
-        r = b === 0 ? "No se puede dividir entre 0." : a / b;
+
+        if (b === 0) {
+
+            document.getElementById("resultadoOperacion").innerText =
+                "No se puede dividir entre 0.";
+
+            return;
+        }
+
+        resultado = a / b;
     }
 
     document.getElementById("resultadoOperacion").innerText =
-        "Resultado: " + r;
+        "Resultado: " + resultado;
+
 }
 
 
-function edad() {
-    let fecha = document.getElementById("fecha").value;
+function calcularEdad() {
+
+    let fecha =
+        document.getElementById("fecha").value;
 
     if (!fecha) {
+
         document.getElementById("resultadoEdad").innerText =
-            "Selecciona una fecha.";
+            "Selecciona tu fecha de nacimiento.";
+
         return;
     }
 
-    let nacimiento = new Date(fecha);
-    let hoy = new Date();
+    let nacimiento =
+        new Date(fecha);
 
-    let años = hoy.getFullYear() - nacimiento.getFullYear();
+    let hoy =
+        new Date();
+
+    let edad =
+        hoy.getFullYear() -
+        nacimiento.getFullYear();
+
+    let mes =
+        hoy.getMonth() -
+        nacimiento.getMonth();
 
     if (
-        hoy.getMonth() < nacimiento.getMonth() ||
-        (hoy.getMonth() === nacimiento.getMonth() &&
-        hoy.getDate() < nacimiento.getDate())
+        mes < 0 ||
+        (
+            mes === 0 &&
+            hoy.getDate() < nacimiento.getDate()
+        )
     ) {
-        años--;
+
+        edad--;
+
     }
 
     document.getElementById("resultadoEdad").innerText =
-        "Edad: " + años + " años";
+        "Tienes " + edad + " años.";
+
 }
 
 
-function imc() {
-    let peso = Number(document.getElementById("peso").value);
-    let altura = Number(document.getElementById("altura").value);
+function calcularIMC() {
 
-    if (!peso || !altura) {
+    let peso =
+        Number(document.getElementById("peso").value);
+
+    let altura =
+        Number(document.getElementById("altura").value);
+
+    if (peso <= 0 || altura <= 0) {
+
         document.getElementById("resultadoIMC").innerText =
-            "Introduce peso y altura.";
+            "Introduce valores válidos.";
+
         return;
     }
 
-    let resultado = peso / (altura * altura);
+    let resultado =
+        peso / (altura * altura);
 
     document.getElementById("resultadoIMC").innerText =
         "IMC: " + resultado.toFixed(2);
+
 }
 
 
-function calcularDescuento() {
-    let precio = Number(document.getElementById("precio").value);
-    let descuento = Number(document.getElementById("descuento").value);
+function calcularInteres() {
 
-    let ahorro = precio * descuento / 100;
-    let final = precio - ahorro;
+    let capital =
+        Number(document.getElementById("capital").value);
 
-    document.getElementById("resultadoDescuento").innerText =
-        "Precio final: €" + final.toFixed(2);
-}
+    let tasa =
+        Number(document.getElementById("tasa").value);
 
+    let años =
+        Number(document.getElementById("años").value);
 
-function calcularIVA() {
-    let precio = Number(document.getElementById("precioIVA").value);
-    let iva = Number(document.getElementById("iva").value);
+    if (
+        capital < 0 ||
+        años < 0 ||
+        isNaN(capital) ||
+        isNaN(tasa) ||
+        isNaN(años)
+    ) {
 
-    let total = precio + (precio * iva / 100);
+        document.getElementById("resultadoInteres").innerText =
+            "Introduce valores válidos.";
 
-    document.getElementById("resultadoIVA").innerText =
-        "Precio con IVA: €" + total.toFixed(2);
-}
+        return;
+    }
 
-
-function interes() {
-    let capital = Number(document.getElementById("capital").value);
-    let tasa = Number(document.getElementById("tasa").value);
-    let años = Number(document.getElementById("años").value);
-
-    let resultado = capital * Math.pow(1 + tasa / 100, años);
+    let resultado =
+        capital *
+        Math.pow(
+            1 + tasa / 100,
+            años
+        );
 
     document.getElementById("resultadoInteres").innerText =
         "Resultado: €" + resultado.toFixed(2);
+
 }
 
 
 function reglaTres() {
-    let a = Number(document.getElementById("r1").value);
-    let b = Number(document.getElementById("r2").value);
-    let c = Number(document.getElementById("r3").value);
 
-    if (!a) {
+    let a =
+        Number(document.getElementById("r1").value);
+
+    let b =
+        Number(document.getElementById("r2").value);
+
+    let c =
+        Number(document.getElementById("r3").value);
+
+    if (a === 0) {
+
         document.getElementById("resultadoRegla").innerText =
-            "El primer valor no puede ser 0.";
+            "A no puede ser 0.";
+
         return;
     }
 
-    let resultado = (b * c) / a;
+    let resultado =
+        (b * c) / a;
 
     document.getElementById("resultadoRegla").innerText =
         "Resultado: " + resultado.toFixed(2);
+
 }
 
 
-function salario() {
-    let hora = Number(document.getElementById("hora").value);
-    let horas = Number(document.getElementById("horas").value);
+function calcularSalario() {
 
-    let mensual = hora * horas * 4.33;
+    let hora =
+        Number(document.getElementById("hora").value);
+
+    let horas =
+        Number(document.getElementById("horas").value);
+
+    if (hora < 0 || horas < 0) {
+
+        document.getElementById("resultadoSalario").innerText =
+            "Introduce valores válidos.";
+
+        return;
+    }
+
+    let mensual =
+        hora * horas * 4.33;
 
     document.getElementById("resultadoSalario").innerText =
-        "Aproximadamente €" + mensual.toFixed(2) + " al mes.";
+        "Aproximadamente €" +
+        mensual.toFixed(2) +
+        " al mes.";
+
 }
 
 
-function tiempo() {
-    let horas = Number(document.getElementById("horasTiempo").value);
+function convertirTiempo() {
+
+    let horas =
+        Number(document.getElementById("horasTiempo").value);
+
+    if (horas < 0) {
+
+        document.getElementById("resultadoTiempo").innerText =
+            "Introduce un valor válido.";
+
+        return;
+    }
+
+    let minutos =
+        horas * 60;
+
+    let segundos =
+        horas * 3600;
 
     document.getElementById("resultadoTiempo").innerText =
-        horas + " horas = " +
-        (horas * 60) + " minutos = " +
-        (horas * 3600) + " segundos";
+        horas +
+        " horas = " +
+        minutos +
+        " minutos = " +
+        segundos +
+        " segundos";
+
 }
+
 
 </script>
 
