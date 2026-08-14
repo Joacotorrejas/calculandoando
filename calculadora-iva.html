@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de IVA | Calculandoando</title>
+<meta name="description" content="Calcula fácilmente el IVA de cualquier precio. Añade o quita IVA de forma rápida y gratuita.">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 22px;
+}
+
+nav {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+main {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.calculadora {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+h1 {
+    text-align: center;
+}
+
+.descripcion {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.resultado {
+    margin-top: 25px;
+    padding: 20px;
+    background: #eff6ff;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.info {
+    margin-top: 35px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">Calculandoando</div>
+<a href="index.html">← Volver a las calculadoras</a>
+</nav>
+</header>
+
+<main>
+
+<div class="calculadora">
+
+<h1>Calculadora de IVA</h1>
+
+<p class="descripcion">
+Calcula rápidamente cuánto IVA pagas y cuál es el precio final de un producto.
+</p>
+
+<label for="precio">Precio sin IVA (€)</label>
+<input type="number" id="precio" placeholder="Ejemplo: 100">
+
+<label for="iva">Porcentaje de IVA (%)</label>
+<input type="number" id="iva" value="21">
+
+<button onclick="calcular()">Calcular IVA</button>
+
+<div class="resultado" id="resultado">
+Introduce un precio y pulsa calcular.
+</div>
+
+</div>
+
+<div class="info">
+
+<h2>¿Cómo se calcula el IVA?</h2>
+
+<p>
+Para calcular el IVA de un producto, primero se multiplica el precio
+por el porcentaje de IVA y después se divide entre 100.
+</p>
+
+<p>
+Por ejemplo, si un producto cuesta 100 € y tiene un IVA del 21 %,
+el IVA serían 21 € y el precio final sería 121 €.
+</p>
+
+<h2>Calcula el IVA fácilmente</h2>
+
+<p>
+Esta herramienta permite calcular rápidamente el precio con IVA
+sin necesidad de realizar la operación manualmente.
+</p>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 Calculandoando · Calculadoras online gratuitas
+</footer>
+
+<script>
+
+function calcular() {
+
+    const precio = Number(document.getElementById("precio").value);
+    const iva = Number(document.getElementById("iva").value);
+
+    if (precio < 0 || iva < 0 || isNaN(precio) || isNaN(iva)) {
+        document.getElementById("resultado").innerHTML =
+            "Introduce valores válidos.";
+        return;
+    }
+
+    const cantidadIVA = precio * iva / 100;
+    const precioFinal = precio + cantidadIVA;
+
+    document.getElementById("resultado").innerHTML =
+        "<strong>Precio sin IVA:</strong> €" + precio.toFixed(2) +
+        "<br><strong>IVA:</strong> €" + cantidadIVA.toFixed(2) +
+        "<br><strong>Precio final:</strong> €" + precioFinal.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
