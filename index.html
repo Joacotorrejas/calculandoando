@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalculaFácil - Calculadoras Online Gratis</title>
+<meta name="description" content="Calculadoras online gratis de porcentajes, edad, IMC, IVA, descuentos, intereses y mucho más.">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 22px;
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav span {
+    color: #cbd5e1;
+}
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 0 0 15px;
+}
+
+.hero p {
+    color: #64748b;
+    font-size: 18px;
+}
+
+.grid {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    color: #64748b;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.resultado {
+    margin-top: 14px;
+    padding: 12px;
+    background: #eff6ff;
+    border-radius: 8px;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 45px 20px;
+    color: #64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">CalculaFácil</div>
+<span>Calculadoras online gratis</span>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Calculadoras Online Gratis</h1>
+<p>Herramientas rápidas y sencillas para tus cálculos diarios.</p>
+</section>
+
+<section class="grid">
+
+<!-- PORCENTAJE -->
+<div class="card">
+<h2>💰 Porcentaje</h2>
+<p>Calcula un porcentaje de una cantidad.</p>
+
+<input type="number" id="cantidad" placeholder="Cantidad">
+<input type="number" id="porcentaje" placeholder="Porcentaje">
+
+<button onclick="porcentaje()">Calcular</button>
+
+<div class="resultado" id="resultadoPorcentaje"></div>
+</div>
+
+
+<!-- CALCULADORA -->
+<div class="card">
+<h2>🧮 Calculadora</h2>
+<p>Realiza operaciones matemáticas básicas.</p>
+
+<input type="number" id="num1" placeholder="Primer número">
+<input type="number" id="num2" placeholder="Segundo número">
+
+<button onclick="operar('+')">Sumar</button>
+<button onclick="operar('-')">Restar</button>
+<button onclick="operar('*')">Multiplicar</button>
+<button onclick="operar('/')">Dividir</button>
+
+<div class="resultado" id="resultadoOperacion"></div>
+</div>
+
+
+<!-- EDAD -->
+<div class="card">
+<h2>🎂 Calculadora de edad</h2>
+<p>Descubre tu edad exacta.</p>
+
+<input type="date" id="fecha">
+
+<button onclick="edad()">Calcular edad</button>
+
+<div class="resultado" id="resultadoEdad"></div>
+</div>
+
+
+<!-- IMC -->
+<div class="card">
+<h2>⚖️ Calculadora de IMC</h2>
+<p>Calcula tu índice de masa corporal.</p>
+
+<input type="number" id="peso" placeholder="Peso en kg">
+<input type="number" id="altura" placeholder="Altura en metros">
+
+<button onclick="imc()">Calcular IMC</button>
+
+<div class="resultado" id="resultadoIMC"></div>
+</div>
+
+
+<!-- DESCUENTO -->
+<div class="card">
+<h2>🛒 Calculadora de descuento</h2>
+<p>Calcula cuánto pagarás después de un descuento.</p>
+
+<input type="number" id="precio" placeholder="Precio">
+<input type="number" id="descuento" placeholder="Descuento %">
+
+<button onclick="calcularDescuento()">Calcular</button>
+
+<div class="resultado" id="resultadoDescuento"></div>
+</div>
+
+
+<!-- IVA -->
+<div class="card">
+<h2>🏦 Calculadora de IVA</h2>
+<p>Añade IVA a cualquier precio.</p>
+
+<input type="number" id="precioIVA" placeholder="Precio sin IVA">
+<input type="number" id="iva" placeholder="IVA % (ej: 21)">
+
+<button onclick="calcularIVA()">Calcular</button>
+
+<div class="resultado" id="resultadoIVA"></div>
+</div>
+
+
+<!-- INTERES -->
+<div class="card">
+<h2>📈 Interés compuesto</h2>
+<p>Calcula cómo crece una inversión.</p>
+
+<input type="number" id="capital" placeholder="Capital inicial">
+<input type="number" id="tasa" placeholder="Interés anual %">
+<input type="number" id="años" placeholder="Años">
+
+<button onclick="interes()">Calcular</button>
+
+<div class="resultado" id="resultadoInteres"></div>
+</div>
+
+
+<!-- REGLA DE TRES -->
+<div class="card">
+<h2>📐 Regla de tres</h2>
+<p>Resuelve una regla de tres simple.</p>
+
+<input type="number" id="r1" placeholder="A">
+<input type="number" id="r2" placeholder="B">
+<input type="number" id="r3" placeholder="C">
+
+<button onclick="reglaTres()">Calcular</button>
+
+<div class="resultado" id="resultadoRegla"></div>
+</div>
+
+
+<!-- SALARIO -->
+<div class="card">
+<h2>💵 Salario mensual</h2>
+<p>Calcula un salario mensual aproximado.</p>
+
+<input type="number" id="hora" placeholder="€/hora">
+<input type="number" id="horas" placeholder="Horas por semana">
+
+<button onclick="salario()">Calcular</button>
+
+<div class="resultado" id="resultadoSalario"></div>
+</div>
+
+
+<!-- TIEMPO -->
+<div class="card">
+<h2>⏱️ Conversor de tiempo</h2>
+<p>Convierte horas en minutos y segundos.</p>
+
+<input type="number" id="horasTiempo" placeholder="Horas">
+
+<button onclick="tiempo()">Convertir</button>
+
+<div class="resultado" id="resultadoTiempo"></div>
+</div>
+
+</section>
+
+<footer>
+© 2026 CalculaFácil · Calculadoras online gratuitas
+</footer>
+
+
+<script>
+
+function porcentaje() {
+    let c = Number(document.getElementById("cantidad").value);
+    let p = Number(document.getElementById("porcentaje").value);
+
+    document.getElementById("resultadoPorcentaje").innerText =
+        c && p ? (c * p / 100).toFixed(2) : "Introduce ambos valores.";
+}
+
+
+function operar(op) {
+    let a = Number(document.getElementById("num1").value);
+    let b = Number(document.getElementById("num2").value);
+    let r;
+
+    if (op === "+") r = a + b;
+    if (op === "-") r = a - b;
+    if (op === "*") r = a * b;
+
+    if (op === "/") {
+        r = b === 0 ? "No se puede dividir entre 0." : a / b;
+    }
+
+    document.getElementById("resultadoOperacion").innerText =
+        "Resultado: " + r;
+}
+
+
+function edad() {
+    let fecha = document.getElementById("fecha").value;
+
+    if (!fecha) {
+        document.getElementById("resultadoEdad").innerText =
+            "Selecciona una fecha.";
+        return;
+    }
+
+    let nacimiento = new Date(fecha);
+    let hoy = new Date();
+
+    let años = hoy.getFullYear() - nacimiento.getFullYear();
+
+    if (
+        hoy.getMonth() < nacimiento.getMonth() ||
+        (hoy.getMonth() === nacimiento.getMonth() &&
+        hoy.getDate() < nacimiento.getDate())
+    ) {
+        años--;
+    }
+
+    document.getElementById("resultadoEdad").innerText =
+        "Edad: " + años + " años";
+}
+
+
+function imc() {
+    let peso = Number(document.getElementById("peso").value);
+    let altura = Number(document.getElementById("altura").value);
+
+    if (!peso || !altura) {
+        document.getElementById("resultadoIMC").innerText =
+            "Introduce peso y altura.";
+        return;
+    }
+
+    let resultado = peso / (altura * altura);
+
+    document.getElementById("resultadoIMC").innerText =
+        "IMC: " + resultado.toFixed(2);
+}
+
+
+function calcularDescuento() {
+    let precio = Number(document.getElementById("precio").value);
+    let descuento = Number(document.getElementById("descuento").value);
+
+    let ahorro = precio * descuento / 100;
+    let final = precio - ahorro;
+
+    document.getElementById("resultadoDescuento").innerText =
+        "Precio final: €" + final.toFixed(2);
+}
+
+
+function calcularIVA() {
+    let precio = Number(document.getElementById("precioIVA").value);
+    let iva = Number(document.getElementById("iva").value);
+
+    let total = precio + (precio * iva / 100);
+
+    document.getElementById("resultadoIVA").innerText =
+        "Precio con IVA: €" + total.toFixed(2);
+}
+
+
+function interes() {
+    let capital = Number(document.getElementById("capital").value);
+    let tasa = Number(document.getElementById("tasa").value);
+    let años = Number(document.getElementById("años").value);
+
+    let resultado = capital * Math.pow(1 + tasa / 100, años);
+
+    document.getElementById("resultadoInteres").innerText =
+        "Resultado: €" + resultado.toFixed(2);
+}
+
+
+function reglaTres() {
+    let a = Number(document.getElementById("r1").value);
+    let b = Number(document.getElementById("r2").value);
+    let c = Number(document.getElementById("r3").value);
+
+    if (!a) {
+        document.getElementById("resultadoRegla").innerText =
+            "El primer valor no puede ser 0.";
+        return;
+    }
+
+    let resultado = (b * c) / a;
+
+    document.getElementById("resultadoRegla").innerText =
+        "Resultado: " + resultado.toFixed(2);
+}
+
+
+function salario() {
+    let hora = Number(document.getElementById("hora").value);
+    let horas = Number(document.getElementById("horas").value);
+
+    let mensual = hora * horas * 4.33;
+
+    document.getElementById("resultadoSalario").innerText =
+        "Aproximadamente €" + mensual.toFixed(2) + " al mes.";
+}
+
+
+function tiempo() {
+    let horas = Number(document.getElementById("horasTiempo").value);
+
+    document.getElementById("resultadoTiempo").innerText =
+        horas + " horas = " +
+        (horas * 60) + " minutos = " +
+        (horas * 3600) + " segundos";
+}
+
+</script>
+
+</body>
+</html>
